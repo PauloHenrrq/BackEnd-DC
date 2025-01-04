@@ -1,0 +1,30 @@
+{
+  "name": "backend-dc",
+  "version": "1.0.0",
+  "description": "Back-End Digital College",
+  "main": "index.js",
+  "keywords": [
+    "api-2",
+    "api-rest"
+  ],
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PauloHenrrq/BackEnd-DC"
+  },
+  "type": "module",
+  "author": "Eu",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
