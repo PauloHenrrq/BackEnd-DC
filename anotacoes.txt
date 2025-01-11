@@ -1,0 +1,11 @@
+- O Sequelize utiliza sintaxes pré-definidas que significam as sintaxes do SQL utilizado.
+
+- Consultas:
+ * DQL
+ * QUERYs
+
+ - Sequência de criação:
+ * PASTA database
+  * database.js
+ * PASTA models
+  * ...-model.js
