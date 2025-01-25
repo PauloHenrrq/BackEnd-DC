@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import sequelizeConnection from "../database/database.js"
+import databaseConnection from "../database/database.js"
 
-const User = sequelizeConnection.define('User', {
+const User = databaseConnection.define('user', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

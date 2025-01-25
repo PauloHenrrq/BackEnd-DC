@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize"
-import sequelizeConnection from "../database/database"
+import databaseConnection from "../database/database"
 
-const Product = sequelizeConnection.define("product", {
+const Product = databaseConnection.define("product", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -20,3 +20,5 @@ const Product = sequelizeConnection.define("product", {
     },
     
 })
+
+export default Product;

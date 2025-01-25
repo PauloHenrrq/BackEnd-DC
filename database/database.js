@@ -1,6 +1,6 @@
 import {Sequelize} from "sequelize"
 
-const sequelizeConnection = new Sequelize ("shop_dc", "root", null, {
+const databaseConnection = new Sequelize ("shop_dc", "root", null, {
     host: "localhost",
     port: 3307,
     dialect: "mariadb",
@@ -9,7 +9,7 @@ const sequelizeConnection = new Sequelize ("shop_dc", "root", null, {
 
 const testConnection = async () => {
     try {
-        await sequelizeConnection.authenticate()
+        await databaseConnection.authenticate()
         console.log("Database connected sucessfully!")
     } 
     catch(error) {
@@ -19,4 +19,4 @@ const testConnection = async () => {
 
 testConnection()
 
-export default sequelizeConnection
+export default databaseConnection
