@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
-import databaseConnection from '../database/database'
-import Order from './Order'
+import databaseConnection from '../database/database.js'
+import Order from './Order.js'
 
-const ItensOrder = databaseConnection.define('itens-order', {
+const ItensOrder = databaseConnection.define('itens_order', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -21,7 +21,7 @@ ItensOrder.belongsTo(Order, {
 
 ItensOrder.belongsTo(product_variation, {
   foreignKey: {
-    name: 'product_variation'
+    name: 'product_variation_id'
   }
 })
 
