@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize'
 import databaseConnection from '../database/database.js'
 import Order from './Order.js'
+import ProductVariation from './ProductVariation.js'
 
 const ItensOrder = databaseConnection.define('itens_order', {
   id: {
@@ -19,7 +20,7 @@ ItensOrder.belongsTo(Order, {
   }
 })
 
-ItensOrder.belongsTo(product_variation, {
+ItensOrder.belongsTo(ProductVariation, {
   foreignKey: {
     name: 'product_variation_id'
   }

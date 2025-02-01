@@ -2,10 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import syncTableDatabase from './database/sync-table-database.js';
 
-import User from './models/user-model.js';
+import User from './models/UserModel.js';
 import Order from './models/Order.js';
-import ItensOrder from './models/Itens-orders.js';
+import ItensOrder from './models/ItensOrders.js';
 import ProductVariation from './models/ProductVariation.js';
+import Products from './models/Products.js';
 
 const app = express();
 const port = 3000;
@@ -21,13 +22,6 @@ app.post('/', async (request, response) => {
   });
   const order = await Order.create({
     user_id: users.id
-  });
-  const itensOrder = await ItensOrder.create({
-    order_id: orders.id,
-    product_variation: product_variation.id
-  });
-  const productVariation = await ProductVariation.create({
-    product_id: products.id
   });
   return response.status(200).json('Dados salvos com sucesso');
 });
