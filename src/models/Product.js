@@ -1,24 +1,24 @@
 import { DataTypes } from "sequelize";
 import databaseConnection from "../database/database.js"
 
-const Products = databaseConnection.define('product', {
+const Product = databaseConnection.define('product', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    brand: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
     name: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    stock: {
+    brand: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
         type: DataTypes.INTEGER,
         allowNull: true
     }
 })
 
-export default Products;
+export default Product;
