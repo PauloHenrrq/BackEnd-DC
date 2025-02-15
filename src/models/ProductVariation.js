@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize'
 import databaseConnection from '../database/database.js'
-import Products from './Products.js'
+import Products from './Product.js'
 
 const ProductVariation = databaseConnection.define('product_variation', {
   id: {

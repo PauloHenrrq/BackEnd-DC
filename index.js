@@ -1,12 +1,12 @@
 import express from 'express'
 import cors from 'cors'
-import syncTableDatabase from './database/sync-table-database.js'
+import syncTableDatabase from './src/database/sync-table-database.js'
 
-import User from './models/UserModel.js'
-import Order from './models/Order.js'
-import ItensOrder from './models/ItensOrders.js'
-import ProductVariation from './models/ProductVariation.js'
-import Product from './models/Product.js'
+import User from './src/models/UserModel.js'
+import Order from './src/models/Order.js'
+import ItensOrder from './src/models/ItensOrders.js'
+import ProductVariation from './src/models/ProductVariation.js'
+import Product from './src/models/Product.js'
 
 const app = express()
 const port = 3000

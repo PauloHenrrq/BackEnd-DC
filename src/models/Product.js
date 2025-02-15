@@ -8,7 +8,7 @@ const Product = databaseConnection.define('product', {
         autoIncrement: true,
     },
     name: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     brand: {
@@ -16,7 +16,7 @@ const Product = databaseConnection.define('product', {
         allowNull: false
     },
     description: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true
     }
 })
