@@ -8,7 +8,7 @@ import Product from "../models/Product.js";
 const syncTableDatabase = async() => {
     await User.sync({ force: false }),
     await Order.sync({ force: false })
-    await Product.sync({ force: true })
+    await Product.sync({ force: false })
 };
 
 export default syncTableDatabase
