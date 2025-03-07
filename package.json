@@ -2,13 +2,13 @@
   "name": "backend-dc",
   "version": "1.0.0",
   "description": "Back-End Digital College",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [
     "api-2",
     "api-rest"
   ],
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

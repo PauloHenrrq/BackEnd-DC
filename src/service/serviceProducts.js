@@ -1,66 +1,54 @@
-import express from 'express'
-import cors from 'cors'
-import syncTableDatabase from './src/database/sync-table-database.js'
+import Product from '../models/Product.js'
 
-import User from './src/models/UserModel.js'
-import Order from './src/models/Order.js'
-import ItensOrder from './src/models/ItensOrders.js'
-import ProductVariation from './src/models/ProductVariation.js'
-import Product from './src/models/Product.js'
-
-const app = express()
-const port = 3000
-
-app.use(cors())
-app.use(express.json())
-
-app.get('/product', async (request, response) => {
+// Retorna todos os produtos
+async function getProductAll (req, res) {
   try {
     const getProduct = await Product.findAll()
 
     if (getProduct.length === 0) {
-      return response.status(404).json({message: "Não existe Produtos"})
+      return res.status(404).json({ message: 'Não existe Produtos' })
     }
 
-    return response.status(200).json({
+    return res.status(200).json({
       message: 'Produtos encontrados com Sucesso:',
       data: getProduct
     })
-
   } catch (error) {
-    return response
+    return res
       .status(500)
       .json(`Não foi possível encontrar os Produtos | Erro: ${error.message}`)
   }
-})
+}
 
-app.post('/product', async (request, response) => {
+// Criação de Produto
+async function postProduct (req, res) {
   try {
-    const { name, brand, description } = request.body
+    const { name, brand, description } = req.body
     const productCreate = await Product.create({
       name,
       brand,
       description
     })
-    return response
+    return res
       .status(200)
       .json(`Produto cadastrado com sucesso: ${JSON.stringify(productCreate)}`)
   } catch (error) {
-    return response
+    return res
       .status(500)
       .json(`Não foi possível cadastrar o Produto | Erro: ${error.message}`)
   }
-})
+}
 
-app.put('/product/:id', async (request, response) => {
+// Atualização dos Produtos por ID
+async function putProductsID (req, res) {
   try {
-    const { id } = request.params
-    const { name, brand, description } = request.body
+    const { id } = req.params
+    const { name, brand, description } = req.body
 
     const idCheck = await Product.findByPk(id)
 
     if (!idCheck) {
-      return response.status(404).json({ message: 'Produto não encontrado.' })
+      return res.status(404).json({ message: 'Produto não encontrado.' })
     }
 
     const productUpdate = await Product.update(
@@ -75,47 +63,45 @@ app.put('/product/:id', async (request, response) => {
         }
       }
     )
-    return response
+    return res
       .status(200)
       .json(`Produto atualizado com sucesso: ${JSON.stringify(productUpdate)}`)
   } catch (error) {
-    return response
+    return res
       .status(500)
       .json(`Não foi possível atualizar o Produto | Erro: ${error.message}`)
   }
-})
+}
 
-app.delete('/product/:id', async (request, response) => {
+// Deleta o Produto pelo ID
+async function deleteProductID (req, res) {
   try {
-    const { id } = request.params
+    const { id } = req.params
 
     const idCheck = await Product.findByPk(id)
 
     if (!idCheck) {
-      return response.status(404).json({ message: 'Produto não encontrado.' })
+      return res.status(404).json({ message: 'Produto não encontrado.' })
     }
 
     const delProduct = await Product.destroy({
       where: {
         id: id
       }
-    }) 
-    return response
+    })
+    return res
       .status(200)
       .json(`Produto deletado com sucesso: ${JSON.stringify(delProduct)}`)
-
   } catch (error) {
-    return response
+    return res
       .status(500)
       .json(`Não foi possível deletar o Produto | Erro: ${error.message}`)
   }
-})
-
-const initServer = async () => {
-  await syncTableDatabase()
-  app.listen(port, error => {
-    console.log('App is running')
-  })
 }
 
-initServer()
+export default {
+  getProductAll,
+  postProduct,
+  putProductsID,
+  deleteProductID
+}
