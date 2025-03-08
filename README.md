@@ -4,7 +4,7 @@
 
 ## 🛠️ Feito com
 - **NodeJS (v10.2.4)**
-### Dependências 🔨
+### Dependências 🔧
 - **Sequelize**
 - **CORS**
 - **nodemon**
