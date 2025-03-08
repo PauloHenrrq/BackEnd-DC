@@ -1,3 +1,3 @@
 # Loja de Produtos - Back-End
-> Proposta pela Digital College
+> Proposta pela Digital College  
 > Projeto para treino 
