@@ -1,2 +1,3 @@
-# Projeto Back-End
-Loja de Produtos
+# Loja de Produtos - Back-End
+> Projeto para treino proposta pela Digital College
+
