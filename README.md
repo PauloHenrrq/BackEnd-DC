@@ -3,10 +3,9 @@
 > - Projeto para treino  
 
 ## 🛠️ Feito com
-** - NodeJS **
+- **NodeJS**
 ### Dependências 🔨
-** - Sequelize
-- CORS
-- nodemon
-- 
-** 
+- **Sequelize**
+- **CORS**
+- **nodemon**
+-  
