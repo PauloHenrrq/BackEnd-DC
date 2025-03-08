@@ -3,7 +3,7 @@
 > - Projeto para treino  
 
 ## 🛠️ Feito com
-- **NodeJS**
+- **NodeJS - 10.2.4**
 ### Dependências 🔨
 - **Sequelize**
 - **CORS**
