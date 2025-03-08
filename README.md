@@ -8,4 +8,5 @@
 - **Sequelize**
 - **CORS**
 - **nodemon**
--  
+- **mariadb**
+- **mysql2**
