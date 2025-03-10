@@ -13,7 +13,7 @@
 
 ## 🧱 Estrutura das pastas:
 ```
-/meu-projeto  
+/BACKEND-DC  
 │── 📁src  
 │   │── 📁controller  
 │   │   │── 📜controllerProducts.js  
