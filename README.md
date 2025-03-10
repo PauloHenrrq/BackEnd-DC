@@ -42,10 +42,13 @@
 ## 📦 Instalação e inicialização:
 
 1. **Clone o repositório**  
-```git clone https://github.com/PauloHenrrq/hangman-game.git```
+```git clone https://github.com/PauloHenrrq/BackEnd-DC.git```
 
 2. **Entre no diretório**  
-```cd hangman-game```
+```cd BackEnd-DC```
 
-3. **Execute o Jogo da Forca**  
-```python main.py```
+3. **Instale as depedências**  
+```npm install```
+
+4. **Execute o projeto**
+```npm run dev```
