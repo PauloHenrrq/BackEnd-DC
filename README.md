@@ -50,5 +50,5 @@
 3. **Instale as depedências**  
 ```npm install```
 
-4. **Execute o projeto**
+4. **Execute o projeto**  
 ```npm run dev```
