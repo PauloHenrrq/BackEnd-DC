@@ -40,7 +40,19 @@
 │── 📜package-lock.json  
 │── 📜package.json  
 │── ℹ README.md
-```
+```  
+
+## 🚀 Rotas API:  
+**_PRODUCT_**  
+- **GET ➜ /products:** Lista todos os produtos disponíveis.  
+- **POST ➜ /products:** Utilizado para postar um produto novo.  
+- **PUT ➜ /products/:id:** Atualiza os produtos por ID.  
+- **DELETE ➜ /products:id:** Deleta produtos existentes por ID.  
+**_USER_**  
+- **GET ➜ /user:** Lista todos os usuários disponíveis.  
+- **POST ➜ /products:** Utilizado para cadastrar um usuário novo.  
+- **PUT ➜ /products/:id:** Atualiza os usuários por ID.  
+- **DELETE ➜ /products:id:** Deleta produtos existentes por ID.  
 
 ## 📦 Instalação e inicialização:
 
