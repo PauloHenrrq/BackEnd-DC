@@ -17,7 +17,8 @@
 ```
 /BACKEND-DC  
 │── 📁src  
-│   │── 📁controller  
+│   │── 📁controller
+│   │   │── 📜controllerAuthentication.js
 │   │   │── 📜controllerProducts.js  
 │   │   │── 📜controllerUser.js  
 │   │── 📁database  
@@ -29,10 +30,12 @@
 │   │   │── 📜Product.js  
 │   │   │── 📜ProductVariation.js  
 │   │   │── 📜UserModel.js  
-│   │── 📁routes  
+│   │── 📁routes
+│   │   │── 📜authentication.js
 │   │   │── 📜product.js  
 │   │   │── 📜user.js  
-│   │── 📁service  
+│   │── 📁service
+│   │   │── 📜serviceAuthentication.js
 │   │   │── 📜index.js  
 │   │   │── 📜server.js
 │  
