@@ -1,4 +1,6 @@
-import express from "express";
+import e from "express";
+
+import authMiddleware from "../middleware/authMiddleware.js";
 
 import controllerUser from "../controller/controllerUser.js";
 const { controllerGetUser: getUserAll,
@@ -7,14 +9,14 @@ const { controllerGetUser: getUserAll,
         controllerDeleteUser: deleteUserID
 } = controllerUser
 
-const userRoutes = express.Router()
+const userRoutes = e.Router()
 
-userRoutes.get('/user', getUserAll)
+userRoutes.get('/user', authMiddleware, getUserAll)
 
-userRoutes.post('/user', postUser)
+userRoutes.post('/user', authMiddleware, postUser)
 
-userRoutes.put('/user/:id', putUserID)
+userRoutes.put('/user/:id', authMiddleware, putUserID)
 
-userRoutes.delete('/user/:id', deleteUserID)
+userRoutes.delete('/user/:id', authMiddleware, deleteUserID)
 
 export default userRoutes

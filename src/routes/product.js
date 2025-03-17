@@ -1,4 +1,6 @@
-import express from 'express'
+import e from 'express'
+
+import authMiddleware from '../middleware/authMiddleware.js';
 
 import controllerProducts from "../controller/controllerProducts.js";
 const { controllerGetProduct: GetProduct, 
@@ -6,14 +8,14 @@ const { controllerGetProduct: GetProduct,
         controllerPutProducts: PutProductsID, 
         controllerDeleteProduct: DeleteProductID } = controllerProducts
 
-const productRoutes = express.Router()
+const productRoutes = e.Router()
 
-productRoutes.get('/products', GetProduct)
+productRoutes.get('/products', authMiddleware, GetProduct)
 
-productRoutes.post('/products', PostProduct)
+productRoutes.post('/products', authMiddleware, PostProduct)
 
-productRoutes.put('/products/:id', PutProductsID)
+productRoutes.put('/products/:id', authMiddleware, PutProductsID)
 
-productRoutes.delete('/products/:id', DeleteProductID)
+productRoutes.delete('/products/:id', authMiddleware, DeleteProductID)
 
 export default productRoutes

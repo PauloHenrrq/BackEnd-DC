@@ -18,7 +18,7 @@ const authMiddleware = (req, res, next) => {
     jwt.verify(token, secretKey)
     next()
   } catch (error) {
-    return res.status(401).json(`Unauthorized. Error: ${error.message}`)
+    return res.status(401).json({ message: error.message === "jwt expired" ? "Session Expired" : `Unauthorized. Error: ${error.message}` })
   }
 }
 
