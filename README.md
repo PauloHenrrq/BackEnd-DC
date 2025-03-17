@@ -51,14 +51,14 @@
 - **GET ➜ /sign/:data** Login para acesso das rotas do projeto. 
 
 **_PRODUCT_**  
-- **GET ➜ /products:** Lista todos os produtos disponíveis.  
-- **POST ➜ /products:** Utilizado para postar um produto novo.  
+- **GET ➜ /products** Lista todos os produtos disponíveis.  
+- **POST ➜ /products** Utilizado para postar um produto novo.  
 - **PUT ➜ /products/:id** Atualiza os produtos por ID.  
 - **DELETE ➜ /products:id** Deleta produtos existentes por ID.
   
 **_USER_**  
-- **GET ➜ /user:** Lista todos os usuários disponíveis.  
-- **POST ➜ /products:** Utilizado para cadastrar um usuário novo.  
+- **GET ➜ /user** Lista todos os usuários disponíveis.  
+- **POST ➜ /products** Utilizado para cadastrar um usuário novo.  
 - **PUT ➜ /products/:id** Atualiza os usuários por ID.  
 - **DELETE ➜ /products:id** Deleta produtos existentes por ID.  
 
