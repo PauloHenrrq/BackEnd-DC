@@ -12,6 +12,7 @@
 - **nodemon (v3.1.9)**
 - **mariadb (v3.4.0)**
 - **mysql2 (v3.12.0)**
+- **jsonwebtoken (v9.0.2)**
 
 ## 🧱 Estrutura das pastas:
 ```
@@ -46,17 +47,20 @@
 ```  
 
 ## 🚀 Rotas API:  
+**_SIGN_**
+- **GET ➜ /sign/:data** Login para acesso das rotas do projeto. 
+
 **_PRODUCT_**  
 - **GET ➜ /products:** Lista todos os produtos disponíveis.  
 - **POST ➜ /products:** Utilizado para postar um produto novo.  
-- **PUT ➜ /products/:id:** Atualiza os produtos por ID.  
-- **DELETE ➜ /products:id:** Deleta produtos existentes por ID.
+- **PUT ➜ /products/:id** Atualiza os produtos por ID.  
+- **DELETE ➜ /products:id** Deleta produtos existentes por ID.
   
 **_USER_**  
 - **GET ➜ /user:** Lista todos os usuários disponíveis.  
 - **POST ➜ /products:** Utilizado para cadastrar um usuário novo.  
-- **PUT ➜ /products/:id:** Atualiza os usuários por ID.  
-- **DELETE ➜ /products:id:** Deleta produtos existentes por ID.  
+- **PUT ➜ /products/:id** Atualiza os usuários por ID.  
+- **DELETE ➜ /products:id** Deleta produtos existentes por ID.  
 
 ## 📦 Instalação e inicialização:
 
