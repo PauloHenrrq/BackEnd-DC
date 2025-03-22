@@ -16,7 +16,7 @@ async function getAuthentication (req, res) {
         { expiresIn: '1h' }
       )
 
-      return res.status(200).json(jwtToken)
+      return res.status(200).json({token: jwtToken})
     } else {
       return res.status(403).json({ message: 'Unauthorized' })
     }

@@ -11,14 +11,15 @@ const authMiddleware = (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1]
+
     if (!token) {
       return res.status(403).json({ message: 'Unauthorized' })
     }
 
     jwt.verify(token, secretKey)
-    next()
+    next()  
   } catch (error) {
-    return res.status(401).json({ message: error.message === "jwt expired" ? "Session Expired" : `Unauthorized. Error: ${error.message}` })
+    return res.status(401).json({ message: error.message === "jwt expired" ? "Session Expired" : `Unauthorized` })
   }
 }
 

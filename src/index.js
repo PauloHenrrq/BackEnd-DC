@@ -9,6 +9,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.post('/users', async (req, res) => {
+    console.log(req.body);
+    return res.json("opa")
+})
+
+
 app.use(productRoutes)
 app.use(userRoutes)
 app.use(authenticationRoute)
