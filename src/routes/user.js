@@ -11,7 +11,7 @@ const { controllerGetUser: getUserAll,
 
 const userRoutes = e.Router()
 
-userRoutes.get('/user', authMiddleware, getUserAll)
+userRoutes.get('/user', getUserAll)
 
 userRoutes.post('/user', authMiddleware, postUser)
 

@@ -1,4 +1,7 @@
+import answers from '../../responses.js'
 import User from '../models/UserModel.js'
+
+import bcrypt from 'bcrypt'
 
 // Retorna todos os usuários
 async function getUserAll (req, res) {
@@ -6,35 +9,61 @@ async function getUserAll (req, res) {
     const getUser = await User.findAll()
 
     if (getUser.length === 0) {
-      return res.status(404).json({ message: 'Não existe Usuários' })
+      return answers.notFound(res, 'Não existe Usuários')
     }
 
-    return res.status(200).json({
-      message: 'Usuários encontrados com Sucesso:',
-      data: getUser
-    })
+    return answers.success(res, 'Usuários encontrados com Sucesso:', getUser)
   } catch (error) {
-    return res
-      .status(500)
-      .json(`Não foi possível encontrar os Usuários | Erro: ${error.message}`)
+    return answers.internalServerError(
+      res,
+      'Não foi possível encontrar os Usuários', error
+    )
   }
 }
 
 // Criação de Usuário
 async function postUser (req, res) {
   try {
-    const { name, birthdate } = req.body
-    const userCreate = await User.create({
-      name,
-      birthdate
+    const { name, birthdate, email, password } = req.body
+
+    if(!name || !birthdate || !email || !password) {
+      return answers.badRequest(res, 'Os campos precisam estar preenchidos')
+    }
+
+    const userAlreadyExists = await User.findOne({
+      where: {
+        email
+      }
     })
-    return res
-      .status(200)
-      .json(`Usuário cadastrado com sucesso: ${JSON.stringify(userCreate)}`)
+
+    if (userAlreadyExists) {
+      return answers.badRequest(res, 'Usuário já existe')
+    }
+
+    /**
+     * Contains 8 characters
+     * Contains special character @$!%*#?&
+     * Contains uppercase and lowercase characters
+     * Contains number
+     */
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/gm
+    const passwordIsValid = passwordRegex.test(password)
+
+    if (!passwordIsValid) {
+      return answers.badRequest(res, 'Senha não é válida')
+    }
+
+    const encryptedPassword = bcrypt.hashSync(password, 10)
+    const createdUser = await User.create({
+      name,
+      birthdate,
+      email,
+      password: encryptedPassword
+    })
+
+    return answers.success(res, 'Usuário cadastrado com sucesso', createdUser)
   } catch (error) {
-    return res
-      .status(500)
-      .json(`Não foi possível cadastrar o Usuário | Erro: ${error.message}`)
+    return answers.internalServerError(res, 'Não foi possível cadastrar o Usuário', error)
   }
 }
 
@@ -98,8 +127,8 @@ async function deleteUserID (req, res) {
 }
 
 export default {
-    getUserAll,
-    postUser,
-    putUserID,
-    deleteUserID
+  getUserAll,
+  postUser,
+  putUserID,
+  deleteUserID
 }
