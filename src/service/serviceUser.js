@@ -16,7 +16,8 @@ async function getUserAll (req, res) {
   } catch (error) {
     return answers.internalServerError(
       res,
-      'Não foi possível encontrar os Usuários', error
+      'Não foi possível encontrar os Usuários',
+      error
     )
   }
 }
@@ -26,7 +27,7 @@ async function postUser (req, res) {
   try {
     const { name, birthdate, email, password } = req.body
 
-    if(!name || !birthdate || !email || !password) {
+    if (!name || !birthdate || !email || !password) {
       return answers.badRequest(res, 'Os campos precisam estar preenchidos')
     }
 
@@ -46,7 +47,8 @@ async function postUser (req, res) {
      * Contains uppercase and lowercase characters
      * Contains number
      */
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/gm
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&,.])[A-Za-z\d@$!%*#?&\.,]{8,}$/gm
     const passwordIsValid = passwordRegex.test(password)
 
     if (!passwordIsValid) {
@@ -63,7 +65,11 @@ async function postUser (req, res) {
 
     return answers.success(res, 'Usuário cadastrado com sucesso', createdUser)
   } catch (error) {
-    return answers.internalServerError(res, 'Não foi possível cadastrar o Usuário', error)
+    return answers.internalServerError(
+      res,
+      'Não foi possível cadastrar o Usuário',
+      error
+    )
   }
 }
 
@@ -71,32 +77,50 @@ async function postUser (req, res) {
 async function putUserID (req, res) {
   try {
     const { id } = req.params
-    const { name, birthdate } = req.body
+    const { name, birthdate, email } = req.body
 
-    const idCheck = await User.findByPk(id)
+    const idUser = await User.findByPk(id)
 
-    if (!idCheck) {
-      return res.status(404).json({ message: 'Usuário não encontrado.' })
+    if (!idUser) {
+      return answers.notFound(res, 'Usuário não encontrado.')
     }
 
-    const userUpdate = await User.update(
-      {
-        name,
-        birthdate
-      },
-      {
-        where: {
-          id: id
-        }
+    if (
+      name === '' ||
+      birthdate === '' ||
+      email === '' ||
+      (name === undefined && birthdate === undefined && email === undefined)
+    ) {
+      return answers.badRequest(res, 'Os campos não podem estar vazios')
+    }
+
+    const updatedData = {
+      name: name != null ? name : idUser.name,
+      birthdate: birthdate != null ? birthdate : idUser.birthdate,
+      email: email != null ? email : idUser.email
+    }
+
+    const userUpdate = await User.update(updatedData, {
+      where: {
+        id: id
       }
+    })
+
+    const userActually = await User.findOne({
+      where: { id: id }
+    })
+
+    return answers.created(
+      res,
+      `${userUpdate} usuário atualizado com sucesso`,
+      userActually
     )
-    return res
-      .status(200)
-      .json(`Usuário atualizado com sucesso: ${JSON.stringify(userUpdate)}`)
   } catch (error) {
-    return res
-      .status(500)
-      .json(`Não foi possível atualizar o Usuário | Erro: ${error.message}`)
+    return answers.internalServerError(
+      res,
+      `Não foi possível atualizar o Usuário`,
+      error.message
+    )
   }
 }
 
@@ -108,7 +132,7 @@ async function deleteUserID (req, res) {
     const idCheck = await User.findByPk(id)
 
     if (!idCheck) {
-      return res.status(404).json({ message: 'Usuário não encontrado.' })
+      return answers.notFound(res, 'Usuário não encontrado')
     }
 
     const delUser = await User.destroy({

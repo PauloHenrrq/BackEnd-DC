@@ -13,7 +13,7 @@ const userRoutes = e.Router()
 
 userRoutes.get('/user', getUserAll)
 
-userRoutes.post('/user', authMiddleware, postUser)
+userRoutes.post('/user', postUser)
 
 userRoutes.put('/user/:id', authMiddleware, putUserID)
 

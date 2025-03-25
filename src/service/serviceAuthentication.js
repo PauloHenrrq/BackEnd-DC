@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt'
 const secretKey =
   'wa1f651sf94awfaw8f1aw81#4281$1f8wfa18wfasf2@$@3Fwafa5sf1w23edszshkb'
 
-async function getAuthentication (req, res) {
+async function postAuthentication (req, res) {
   try {
     const { email, password } = req.body
 
@@ -25,8 +25,6 @@ async function getAuthentication (req, res) {
       return answers.badRequest(res, 'Usuário não existe')
     }
 
-    console.log(findUser.id)
-
     try {
       const passwordCheck = await bcrypt.compare(password, findUser.password)
 
@@ -38,7 +36,7 @@ async function getAuthentication (req, res) {
             data: { id: findUser.id, email: findUser.email }
           },
           secretKey,
-          { expiresIn: '1h' }
+          { expiresIn: '10s' }
         )
 
         return answers.success(res, jwtToken)
@@ -51,4 +49,4 @@ async function getAuthentication (req, res) {
   }
 }
 
-export default getAuthentication
+export default postAuthentication
