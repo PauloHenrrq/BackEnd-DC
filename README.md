@@ -7,7 +7,9 @@
 ## 🛠️ Feito com
 - **NodeJS (v10.2.4)**
 ### 🔧 Dependências
-- **Sequelize (v6.37.5)**
+- **sequelize (v6.37.5)**
+- **express (v4.21.2)**
+- **Bcrypt (v5.1.1)**
 - **CORS (v2.8.5)**
 - **nodemon (v3.1.9)**
 - **mariadb (v3.4.0)**
