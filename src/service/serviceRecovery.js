@@ -1,4 +1,4 @@
-import answers from '../../responses.js'
+import answers from '../responses.js'
 import User from '../models/UserModel.js'
 import passwordRecovery from '../models/passwordRecovery.js'
 

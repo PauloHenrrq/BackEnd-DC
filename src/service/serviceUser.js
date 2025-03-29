@@ -1,6 +1,5 @@
-import answers from '../../responses.js'
+import answers from '../responses.js'
 import User from '../models/UserModel.js'
-import answers from '../../responses.js'
 
 import bcrypt from 'bcrypt'
 
@@ -13,7 +12,6 @@ async function getUserAll (req, res) {
       return answers.noContent(res, 'Não existe Usuários')
     }
 
-    return answers.success(res, 'Usuários encontrados com Sucesso:', getUser)
     return answers.success(res, 'Usuários encontrados com Sucesso:', getUser)
   } catch (error) {
     return answers.InternalServerError(
@@ -131,10 +129,6 @@ async function deleteUserID (req, res) {
 }
 
 export default {
-  getUserAll,
-  postUser,
-  putUserID,
-  deleteUserID
   getUserAll,
   postUser,
   putUserID,
