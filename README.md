@@ -20,26 +20,33 @@
 │── 📁src  
 │   │── 📁controller
 │   │   │── 📜controllerAuthentication.js
-│   │   │── 📜controllerProducts.js  
-│   │   │── 📜controllerUser.js  
+│   │   │── 📜controllerProducts.js
+│   │   │── 📜controllerRecovery.js  
+│   │   │── 📜controllerUser.js
 │   │── 📁database  
 │   │   │── 📜database.js  
 │   │   │── 📜sync-table-database.js
+│   │── 📁middleware
+│   │   │── 📜authMiddleware.js   
 │   │── 📁models    
 │   │   │── 📜ItensOrders.js  
-│   │   │── 📜Orders.js  
+│   │   │── 📜Orders.js
+│   │   │── 📜passwordRecovery.js 
 │   │   │── 📜Product.js  
 │   │   │── 📜ProductVariation.js  
 │   │   │── 📜UserModel.js  
 │   │── 📁routes
 │   │   │── 📜authentication.js
-│   │   │── 📜product.js  
+│   │   │── 📜product.js
+│   │   │── 📜recovery.js 
 │   │   │── 📜user.js  
 │   │── 📁service
 │   │   │── 📜serviceAuthentication.js
-│   │   │── 📜index.js  
-│   │   │── 📜server.js
-│  
+│   │   │── 📜serviceProducts.js
+│   │   │── 📜serviceRecovery.js
+│   │   │── 📜serviceUser.js 
+│   │── 📜index.js  
+│   │── 📜server.js
 │── 📜.gitignore  
 │── 📜package-lock.json  
 │── 📜package.json  
