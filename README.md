@@ -55,7 +55,11 @@
 
 ## 🚀 Rotas API:  
 **_SIGN_**
-- **GET ➜ /sign/:data** Login para acesso das rotas do projeto. 
+- **POST ➜ /sign** Login para acesso das rotas do projeto.
+
+**_RECOVERY_**
+- **POST ➜ /email** Fornecimento de código para recuperação por e-mail.
+- **POST ➜ /recovery** Recuperação de senha.
 
 **_PRODUCT_**  
 - **GET ➜ /products** Lista todos os produtos disponíveis.  
