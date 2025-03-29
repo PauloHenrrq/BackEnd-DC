@@ -1,8 +1,8 @@
 import e from "express";
 
-import controllerGetAuthentication from "../controller/controllerAuthentication.js";
+import controllerPostAuthentication from "../controller/controllerAuthentication.js";
 const authenticationRoute = e.Router()
 
-authenticationRoute.get('/sign/:data', controllerGetAuthentication)
+authenticationRoute.post('/sign', controllerPostAuthentication)
 
 export default authenticationRoute

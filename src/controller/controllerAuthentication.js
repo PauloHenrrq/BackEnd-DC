@@ -1,7 +1,7 @@
-import getAuthentication from "../service/serviceAuthentication.js";
+import postAuthentication from "../service/serviceAuthentication.js";
 
-const controllerGetAuthentication = (req, res) => {
-    getAuthentication(req, res)
+const controllerPostAuthentication = (req, res) => {
+    postAuthentication(req, res)
 }
 
-export default controllerGetAuthentication
+export default controllerPostAuthentication

@@ -1,3 +1,4 @@
+import answers from '../../responses.js'
 import User from '../models/UserModel.js'
 import answers from '../../responses.js'
 
@@ -12,6 +13,7 @@ async function getUserAll (req, res) {
       return answers.noContent(res, 'Não existe Usuários')
     }
 
+    return answers.success(res, 'Usuários encontrados com Sucesso:', getUser)
     return answers.success(res, 'Usuários encontrados com Sucesso:', getUser)
   } catch (error) {
     return answers.InternalServerError(
@@ -73,10 +75,10 @@ async function putUserID (req, res) {
     const { id } = req.params
     const { name, email } = req.body
 
-    const idCheck = await User.findByPk(id)
+    const idUser = await User.findByPk(id)
 
-    if (!idCheck) {
-      return res.status(404).json({ message: 'Usuário não encontrado.' })
+    if (!idUser) {
+      return answers.notFound(res, 'Usuário não encontrado.')
     }
 
     const userUpdate = await User.update(
@@ -94,9 +96,11 @@ async function putUserID (req, res) {
       .status(200)
       .json(`Usuário atualizado com sucesso: ${JSON.stringify(userUpdate)}`)
   } catch (error) {
-    return res
-      .status(500)
-      .json(`Não foi possível atualizar o Usuário | Erro: ${error.message}`)
+    return answers.internalServerError(
+      res,
+      `Não foi possível atualizar o Usuário`,
+      error.message
+    )
   }
 }
 
@@ -108,7 +112,7 @@ async function deleteUserID (req, res) {
     const idCheck = await User.findByPk(id)
 
     if (!idCheck) {
-      return res.status(404).json({ message: 'Usuário não encontrado.' })
+      return answers.notFound(res, 'Usuário não encontrado')
     }
 
     const delUser = await User.destroy({
@@ -131,4 +135,9 @@ export default {
   postUser,
   putUserID,
   deleteUserID
+  getUserAll,
+  postUser,
+  putUserID,
+  deleteUserID
 }
+

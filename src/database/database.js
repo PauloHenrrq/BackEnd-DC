@@ -2,8 +2,8 @@ import {Sequelize} from "sequelize"
 
 const databaseConnection = new Sequelize ("shop_dc", "root", null, {
     host: "localhost",
-    port: 3307,
-    dialect: "mariadb",
+    port: 3306,
+    dialect: "mysql",
     logging: false
 })
 

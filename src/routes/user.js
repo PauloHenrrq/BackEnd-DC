@@ -11,12 +11,9 @@ const { controllerGetUser: getUserAll,
 
 const userRoutes = e.Router()
 
-userRoutes.get('/user', authMiddleware, getUserAll)
+userRoutes.get('/user', getUserAll)
 
-userRoutes.post('/user', authMiddleware, async (req, res) => {
-    console.log(req.body);
-    return res.json("opa")
-})
+userRoutes.post('/user', postUser)
 
 userRoutes.put('/user/:id', authMiddleware, putUserID)
 
