@@ -1,6 +1,5 @@
 # Loja de Produtos 🛒 - Back-End
-> - Proposta pela Digital College  
-> - Projeto para treino  
+> - Proposta pela Digital College
 ## 📍 Objetivo do Projeto
 > Fazer uma Loja de Produtos, utilizando a tecnologia NodeJS para fazer um sistema completo com banco de dados possuindo cadastramento de Clientes e Produtos.
 
